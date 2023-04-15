@@ -36,7 +36,7 @@ async def send_email(contractor_id: int):
        Setting.DB_PASSWORD
     )
     name, email = db.get_contractor_email(contractor_id)
-    link = f"https://www.google.com/?contractor_id={contractor_id}"
+    link = f"http://localhost:8080/register/{contractor_id}"
 
     with open("Templates\email_template.html", "r") as f:
         template = f.read()
