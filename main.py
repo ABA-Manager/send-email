@@ -26,7 +26,6 @@ conf = ConnectionConfig(
 
 @app.post("/send_email/{contractor_id}")
 async def send_email(contractor_id: int):
-
     fm = FastMail(conf)
 
     db = Database(
@@ -37,11 +36,12 @@ async def send_email(contractor_id: int):
        Setting.DB_PASSWORD
     )
     name, email = db.get_contractor_email(contractor_id)
+    link = f"https://www.google.com/?contractor_id={contractor_id}"
 
     with open("Templates\email_template.html", "r") as f:
         template = f.read()
 
-    body = template.replace('{{ name }}', name)
+    body = template.replace('{{ name }}', name).replace('{{ link }}',link )
 
     # Creamos el mensaje
     message = MessageSchema(
