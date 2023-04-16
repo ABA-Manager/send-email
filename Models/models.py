@@ -24,7 +24,7 @@ class Database:
     def get_contractor_email(self, contractor_id):
         self.connect()
         cur = self.conn.cursor()
-        query = f"SELECT \"Name\",\"Extra\" FROM \"Contractor\" c WHERE c.\"Id\" = {contractor_id}"
+        query = f"SELECT \"Name\",\"Email\" FROM \"Contractor\" c WHERE c.\"Id\" = {contractor_id}"
         cur.execute(query)
         name, email = cur.fetchone()
         cur.close()
