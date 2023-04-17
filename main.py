@@ -36,7 +36,7 @@ async def send_email(contractor_id: int):
     )
     name, email = db.get_contractor_email(contractor_id)
     #Cambiar con la direccion del servidor
-    link = f"http://localhost:8080/register/{contractor_id}"
+    link = f"https://test.abaanalystgroup.live/api/register/{contractor_id}"
 
     with open("Templates\email_template.html", "r",encoding='utf-8') as f:
         template = f.read()
