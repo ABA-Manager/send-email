@@ -38,7 +38,7 @@ async def send_email(contractor_id: int):
     #Cambiar con la direccion del servidor
     link = f"https://test.abaanalystgroup.live/api/register/{contractor_id}"
 
-    with open("Templates\email_template.html", "r",encoding='utf-8') as f:
+    with open("/app/Templates/email_template.html", "r",encoding='utf-8') as f:
         template = f.read()
 
     body = template.replace('{{ name }}', name).replace('{{ link }}',link )
