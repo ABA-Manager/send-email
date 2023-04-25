@@ -1,6 +1,7 @@
 from fastapi_mail import FastMail, ConnectionConfig, MessageSchema
 from fastapi import FastAPI, HTTPException
 import os
+from fastapi.middleware.cors import CORSMiddleware
 
 import Setting
 from Models.models import Database
@@ -9,6 +10,14 @@ from Models.models import Database
 #load_dotenv()
 
 app = FastAPI()
+# Cors
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Configuración de la conexión SMTP
 conf = ConnectionConfig(
